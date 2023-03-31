@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--keeping tools text long enough to make sure,
+it is single line with ellipses and not truncating.-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/std_margin"
+    android:maxHeight="@dimen/row_height"
+    android:minHeight="@dimen/row_height">
+
+    <TextView
+        android:id="@+id/ticker"
+        style="@style/BlackStyle.TitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Paramount Film Studio to layoff 5% of its people. Paramount Film Studio to layoff 5% of its people. Paramount Film Studio to layoff 5% of its peoples." />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/BlackStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/std_tiny_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="@id/ticker"
+        app:layout_constraintTop_toBottomOf="@id/ticker"
+        tools:text="Paramount Film Studio to layoff 5% of its people. Paramount Film Studio to layoff 5% of its people. Paramount Film Studio to layoff 5% of its peoples." />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <TextView
+        android:id="@+id/currency"
+        style="@style/BlackStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/time"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="USD" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/BlackStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_tiny_margin"
+        app:layout_constraintStart_toEndOf="@id/currency"
+        app:layout_constraintTop_toTopOf="@id/currency"
+        tools:text="4566" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/currency"
+        app:layout_constraintTop_toBottomOf="@id/currency"
+        tools:text="20 Nov 2021, 6:10:23" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
