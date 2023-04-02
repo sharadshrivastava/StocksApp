@@ -1,4 +1,4 @@
-package com.example.testapp
+package com.example.stocksapp
 
 import org.junit.Test
 
