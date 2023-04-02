@@ -1,17 +1,20 @@
 <resources>
+
     <style name="BlackStyle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="BlackStyle.Large">
         <item name="android:textSize">@dimen/text_size_large</item>
     </style>
 
-    <style name="BlackStyle.TitleStyle">
-        <item name="android:textSize">@dimen/text_size_header</item>
+    <style name="BlackStyle.Large.TitleStyle">
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TickerStyle">
         <item name="android:textColor">@color/colorTitle</item>
-        <item name="android:textSize">@dimen/text_size_header</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textStyle">bold</item>
     </style>
 

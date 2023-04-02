@@ -20,7 +20,7 @@ class StocksRepositoryImpl @Inject constructor(
 
     } catch (e: Exception) {
         //we can customize error messages based on error codes
-        //but in test app sending as it is.
+        //but in test app sending server messages as it is.
         StocksResponseResult.Error(e.message)
     }
 }

@@ -11,34 +11,29 @@ import javax.inject.Inject
 class StockItemMapper @Inject constructor() {
 
     fun mapToStockItems(stocks: List<StocksResponse.StocksItem?>) =
-        //mapping only valid items, all invalid items will be filtered out
-        stocks.mapNotNull { stockItemResponse ->
-            if (isStockItemResponseValid(stockItemResponse)) {
-                toStockItem(stockItemResponse!!)
-            } else null
+        stocks.map {
+            toStockItem(it)
         }
 
-    //In 'isStockItemResponseValid()', it is checked that mandatory fields are not null
-    // so it is safe to use "!!" with these fields.
-    //Only 'quantity' is nullable as per requirement.
-    private fun toStockItem(stocksItemResponse: StocksResponse.StocksItem) = StockItem(
-        currentPrice = toDollars(stocksItemResponse.currentPriceCents!!),
-        ticker = stocksItemResponse.ticker!!,
-        name = stocksItemResponse.name!!,
-        currency = stocksItemResponse.currency!!,
-        currentPriceTime = formatTime(stocksItemResponse.currentPriceTimestamp!!),
-        quantity = stocksItemResponse.quantity
+    /**
+    As per business requirement, mandatory fields shouldn't be null
+    so used 'requireNotNull' for all mandatory non nullable fields.
+    If these fields are nullable then in viewModel coroutine exception will be caught, which will show error.
+    Only 'quantity' field is nullable.
+     */
+    private fun toStockItem(stocksItemResponse: StocksResponse.StocksItem?) = StockItem(
+        currentPrice = toDollars(requireNotNull(stocksItemResponse?.currentPriceCents)),
+        ticker = requireNotNull(stocksItemResponse?.ticker),
+        name = requireNotNull(stocksItemResponse?.name),
+        currency = requireNotNull(stocksItemResponse?.currency),
+        currentPriceTime = formatTime(requireNotNull(stocksItemResponse?.currentPriceTimestamp)),
+        quantity = stocksItemResponse?.quantity
     )
 
     private fun formatTime(timestamp: Int) =
         Date.from(Instant.ofEpochSecond(timestamp.toLong())).parseToString()
 
-    private fun toDollars(cents: Int) = BigDecimal(cents).divide(BigDecimal.valueOf(100)).toString()
-
-    //As per business requirement, these fields shouldn't be null.
-    private fun isStockItemResponseValid(
-        stockItem: StocksResponse.StocksItem?
-    ) = stockItem?.currentPriceCents != null && stockItem.ticker != null && stockItem.name != null
-            && stockItem.currency != null && stockItem.currentPriceTimestamp != null
+    private fun toDollars(cents: Int) =
+        BigDecimal(cents).divide(BigDecimal.valueOf(100)).toString()
 }
 

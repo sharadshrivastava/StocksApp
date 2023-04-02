@@ -27,6 +27,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--created separate layouts for error and empty and included them here,
+    instead of making them part of this file so that they can be reused
+    in future screens as well.-->
     <include
         android:id="@+id/errorContainer"
         layout="@layout/layout_error"
