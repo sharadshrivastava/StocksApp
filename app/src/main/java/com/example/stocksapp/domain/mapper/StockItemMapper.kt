@@ -1,4 +1,4 @@
-package com.example.stocksapp.domain.usecases
+package com.example.stocksapp.domain.mapper
 
 import com.example.stocksapp.data.common.parseToString
 import com.example.stocksapp.domain.model.dto.StocksResponse

@@ -1,22 +1,13 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="std_tiny_margin">4dp</dimen>
     <dimen name="std_short_margin">8dp</dimen>
-    <dimen name="std_short_med_margin">12dp</dimen>
     <dimen name="std_margin">16dp</dimen>
-    <dimen name="std_med_margin">20dp</dimen>
     <dimen name="std_large_margin">24dp</dimen>
-    <dimen name="std_large_med_margin">28dp</dimen>
     <dimen name="std_xlarge_margin">32dp</dimen>
-    <dimen name="row_height">86dp</dimen>
-    <dimen name="thumbnail_img_width">124dp</dimen>
-    <dimen name="one_dp">1dp</dimen>
-    <dimen name="two_dp">2dp</dimen>
-    <dimen name="text_size_small">12sp</dimen>
-    <dimen name="text_size_med">15sp</dimen>
+    <dimen name="error_top_margin">132dp</dimen>
+    <dimen name="error_image_height">200dp</dimen>
     <dimen name="text_size">16sp</dimen>
     <dimen name="text_size_large">18sp</dimen>
     <dimen name="text_size_header">20sp</dimen>
     <dimen name="text_size_xlarge">24sp</dimen>
-    <dimen name="text_size_otp">56sp</dimen>
 </resources>

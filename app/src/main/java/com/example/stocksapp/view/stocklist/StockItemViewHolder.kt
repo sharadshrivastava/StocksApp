@@ -1,12 +1,12 @@
-package com.example.stocksapp.view
+package com.example.stocksapp.view.stocklist
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stocksapp.R
-import com.example.stocksapp.databinding.LayoutStocksItemBinding
+import com.example.stocksapp.databinding.ItemStockBinding
 import com.example.stocksapp.domain.model.ui.StockItem
 
-class StockItemViewHolder(private val binding: LayoutStocksItemBinding) :
+class StockItemViewHolder(private val binding: ItemStockBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: StockItem) {

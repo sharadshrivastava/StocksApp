@@ -1,6 +1,7 @@
-package com.example.stocksapp.domain.usecases
+package com.example.stocksapp.domain.usecase
 
 import com.example.stocksapp.data.StocksRepositoryImpl
+import com.example.stocksapp.domain.mapper.StockItemMapper
 import com.example.stocksapp.domain.model.dto.StocksResponseResult
 import com.example.stocksapp.domain.model.ui.StocksResult
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.example.stocksapp.view
+package com.example.stocksapp.view.stocklist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -57,32 +57,43 @@ class StocksListFragment : Fragment() {
     }
 
     private fun handleViewState(viewState: StocksViewState) = when (viewState) {
-        StocksViewState.Loading -> {
-            binding.loading.visibility = View.VISIBLE
-            binding.stocksList.visibility = View.GONE
-        }
-
-        is StocksViewState.Success -> {
-            handleSuccess(viewState.stocks)
-        }
-
-        StocksViewState.Empty -> Unit
-
-        is StocksViewState.Error -> {
-            handleError(viewState.errorMessage)
-        }
+        StocksViewState.Loading -> handleLoadingState()
+        StocksViewState.Empty -> handleEmptyState()
+        is StocksViewState.Success -> handleSuccessState(viewState.stocks)
+        is StocksViewState.Error -> handleErrorState(viewState.errorMessage)
     }
 
-    private fun handleSuccess(stocks: List<StockItem>) {
-        binding.loading.visibility = View.GONE
-        binding.stocksList.visibility = View.VISIBLE
+    private fun handleLoadingState() {
+        binding.stocksList.visibility = View.GONE
+        binding.errorContainer.root.visibility = View.GONE
+        binding.emptyContainer.root.visibility = View.GONE
 
+        binding.loading.visibility = View.VISIBLE
+    }
+
+    private fun handleSuccessState(stocks: List<StockItem>) {
+        binding.loading.visibility = View.GONE
+        binding.errorContainer.root.visibility = View.GONE
+        binding.emptyContainer.root.visibility = View.GONE
+
+        binding.stocksList.visibility = View.VISIBLE
         (binding.stocksList.adapter as StocksAdapter).submitList(stocks)
     }
 
-    private fun handleError(errorMessage: String?) {
-        /*binding.isLoading = false
-        binding.isEmpty = true
-        showErrorBar(msg = msg)*/
+    private fun handleErrorState(errorMessage: String?) {
+        binding.stocksList.visibility = View.GONE
+        binding.loading.visibility = View.GONE
+        binding.emptyContainer.root.visibility = View.GONE
+
+        binding.errorContainer.root.visibility = View.VISIBLE
+        binding.errorContainer.errorText.text = errorMessage
+    }
+
+    private fun handleEmptyState() {
+        binding.stocksList.visibility = View.GONE
+        binding.loading.visibility = View.GONE
+        binding.errorContainer.root.visibility = View.GONE
+
+        binding.emptyContainer.root.visibility = View.VISIBLE
     }
 }

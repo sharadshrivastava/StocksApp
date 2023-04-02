@@ -1,9 +1,9 @@
-package com.example.stocksapp.view
+package com.example.stocksapp.view.stocklist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stocksapp.domain.model.ui.StocksResult
-import com.example.stocksapp.domain.usecases.StocksUseCase
+import com.example.stocksapp.domain.usecase.StocksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,8 +35,11 @@ class StocksViewModel @Inject constructor(
 
     private fun handleResult(stocksResult: StocksResult) {
         when (stocksResult) {
-            is StocksResult.Success ->
-                _viewState.value = StocksViewState.Success(stocksResult.stocks)
+            is StocksResult.Success -> {
+                _viewState.value =
+                    if (stocksResult.stocks.isEmpty()) StocksViewState.Empty
+                    else StocksViewState.Success(stocksResult.stocks)
+            }
 
             is StocksResult.Error ->
                 _viewState.value = StocksViewState.Error(stocksResult.errorMessage)

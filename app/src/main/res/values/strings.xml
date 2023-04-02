@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">StocksApp</string>
     <string name="stock_quantity">%1s Units</string>
-
+    <string name="no_data">Oops, could not find any stock</string>
 </resources>

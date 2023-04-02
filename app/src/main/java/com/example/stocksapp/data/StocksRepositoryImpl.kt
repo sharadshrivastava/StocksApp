@@ -19,6 +19,8 @@ class StocksRepositoryImpl @Inject constructor(
         StocksResponseResult.Success(stocks)
 
     } catch (e: Exception) {
+        //we can customize error messages based on error codes
+        //but in test app sending as it is.
         StocksResponseResult.Error(e.message)
     }
 }

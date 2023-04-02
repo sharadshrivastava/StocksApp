@@ -1,10 +1,10 @@
-package com.example.stocksapp.view
+package com.example.stocksapp.view.stocklist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.stocksapp.databinding.LayoutStocksItemBinding
+import com.example.stocksapp.databinding.ItemStockBinding
 import com.example.stocksapp.domain.model.ui.StockItem
 
 class StocksAdapter : ListAdapter<StockItem, StockItemViewHolder>(NumberDiffCallback()) {
@@ -12,7 +12,7 @@ class StocksAdapter : ListAdapter<StockItem, StockItemViewHolder>(NumberDiffCall
     /* Creates and inflates view and return StockItemViewHolder. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         StockItemViewHolder(
-            LayoutStocksItemBinding.inflate(
+            ItemStockBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
