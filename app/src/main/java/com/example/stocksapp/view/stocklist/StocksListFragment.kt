@@ -9,12 +9,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.stocksapp.R
 import com.example.stocksapp.databinding.FragmentStocksListBinding
 import com.example.stocksapp.domain.model.ui.StockItem
+import com.example.stocksapp.view.common.addItemDecorationWithoutLastDivider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class StocksListFragment : Fragment() {
@@ -47,12 +49,8 @@ class StocksListFragment : Fragment() {
     private fun setupList() {
         with(binding.stocksList) {
             layoutManager = LinearLayoutManager(requireContext())
-            addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), DividerItemDecoration.VERTICAL
-                )
-            )
             adapter = StocksAdapter()
+            addItemDecorationWithoutLastDivider()
         }
     }
 
@@ -86,7 +84,10 @@ class StocksListFragment : Fragment() {
         binding.emptyContainer.root.visibility = View.GONE
 
         binding.errorContainer.root.visibility = View.VISIBLE
-        binding.errorContainer.errorText.text = errorMessage
+
+        //showing user readable error message in UI and logging the technical error message.
+        binding.errorContainer.errorText.text = getString(R.string.generic_error_msg)
+        Timber.e(errorMessage)
     }
 
     private fun handleEmptyState() {

@@ -4,27 +4,27 @@ import com.google.gson.annotations.SerializedName
 
 data class StocksResponse(
 
-    @field:SerializedName("stocks")
-    val stocks: List<StocksItem?>? = null
+    @SerializedName("stocks")
+    val stocks: List<StocksItem?>?
 ) {
     data class StocksItem(
 
-        @field:SerializedName("current_price_cents")
-        val currentPriceCents: Int? = null,
+        @SerializedName("current_price_cents")
+        val currentPriceCents: Int?,
 
-        @field:SerializedName("ticker")
-        val ticker: String? = null,
+        @SerializedName("ticker")
+        val ticker: String?,
 
-        @field:SerializedName("quantity")
-        val quantity: Int? = null,
+        @SerializedName("quantity")
+        val quantity: Int?,
 
-        @field:SerializedName("name")
-        val name: String? = null,
+        @SerializedName("name")
+        val name: String?,
 
-        @field:SerializedName("currency")
-        val currency: String? = null,
+        @SerializedName("currency")
+        val currency: String?,
 
-        @field:SerializedName("current_price_timestamp")
-        val currentPriceTimestamp: Int? = null
+        @SerializedName("current_price_timestamp")
+        val currentPriceTimestamp: Int?
     )
 }
