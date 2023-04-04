@@ -5,7 +5,6 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.Forest.plant
 
-
 @HiltAndroidApp
 class StocksApp : Application() {
 

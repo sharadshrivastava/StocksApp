@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class StocksResponse(
 
     @SerializedName("stocks")
-    val stocks: List<StocksItem?>?
+    val stocks: List<StockItem?>?
 ) {
-    data class StocksItem(
+    data class StockItem(
 
         @SerializedName("current_price_cents")
         val currentPriceCents: Int?,

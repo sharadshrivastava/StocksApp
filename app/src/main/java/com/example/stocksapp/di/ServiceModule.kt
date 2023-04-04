@@ -1,7 +1,9 @@
 package com.example.stocksapp.di
 
+import com.example.stocksapp.data.StocksRepositoryImpl
 import com.example.stocksapp.data.network.StocksApi
 import com.example.stocksapp.data.network.StocksApi.Companion.BASE_URL
+import com.example.stocksapp.domain.StocksRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,11 @@ object ServiceModule {
             .build()
             .create(StocksApi::class.java)
     }
+
+    /** providing repository so that use cases need not to use
+    concrete repository in as param.*/
+    @Provides
+    @Singleton
+    fun provideRepository(api: StocksApi): StocksRepository =
+        StocksRepositoryImpl(api)
 }

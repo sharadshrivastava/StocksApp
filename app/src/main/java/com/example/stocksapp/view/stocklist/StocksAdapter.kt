@@ -33,10 +33,9 @@ class StocksAdapter : ListAdapter<StockItem, StockItemViewHolder>(NumberDiffCall
                     && oldItem.ticker == newItem.ticker
         }
 
+        //assuming for same name and ticker value, at same time, stock item is same.
         override fun areContentsTheSame(oldItem: StockItem, newItem: StockItem): Boolean {
-            return oldItem.currentPrice == newItem.currentPrice
-                    && oldItem.currentPriceTime == newItem.currentPriceTime
-                    && oldItem.quantity == newItem.quantity
+            return oldItem.currentPriceTime == newItem.currentPriceTime
         }
     }
 }

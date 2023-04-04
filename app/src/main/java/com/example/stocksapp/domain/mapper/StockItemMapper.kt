@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class StockItemMapper @Inject constructor() {
 
-    fun mapToStockItems(stocks: List<StocksResponse.StocksItem?>) =
+    fun mapToStockItems(stocks: List<StocksResponse.StockItem?>) =
         stocks.map {
             toStockItem(it)
         }
@@ -21,13 +21,13 @@ class StockItemMapper @Inject constructor() {
     If these fields are nullable then in viewModel coroutine exception will be caught, which will show error.
     Only 'quantity' field is nullable.
      */
-    private fun toStockItem(stocksItemResponse: StocksResponse.StocksItem?) = StockItem(
-        currentPrice = toDollars(requireNotNull(stocksItemResponse?.currentPriceCents)),
-        ticker = requireNotNull(stocksItemResponse?.ticker),
-        name = requireNotNull(stocksItemResponse?.name),
-        currency = requireNotNull(stocksItemResponse?.currency),
-        currentPriceTime = formatTime(requireNotNull(stocksItemResponse?.currentPriceTimestamp)),
-        quantity = stocksItemResponse?.quantity
+    private fun toStockItem(stockItemResponse: StocksResponse.StockItem?) = StockItem(
+        currentPrice = toDollars(requireNotNull(stockItemResponse?.currentPriceCents)),
+        ticker = requireNotNull(stockItemResponse?.ticker),
+        name = requireNotNull(stockItemResponse?.name),
+        currency = requireNotNull(stockItemResponse?.currency),
+        currentPriceTime = formatTime(requireNotNull(stockItemResponse?.currentPriceTimestamp)),
+        quantity = stockItemResponse?.quantity
     )
 
     private fun formatTime(timestamp: Int) =
