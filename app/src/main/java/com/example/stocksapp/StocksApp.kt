@@ -10,13 +10,6 @@ class StocksApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appContext = this
-
         plant(Timber.DebugTree())
-    }
-
-    companion object {
-        var appContext: StocksApp? =
-            null //It can be null in testing environment, so initialised it as nullable.
     }
 }
