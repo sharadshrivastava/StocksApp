@@ -12,4 +12,5 @@ class StocksApp : Application() {
         super.onCreate()
         plant(Timber.DebugTree())
     }
+
 }
